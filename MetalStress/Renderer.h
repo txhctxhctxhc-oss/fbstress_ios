@@ -4,4 +4,6 @@
 - (instancetype)initWithMetalKitView:(MTKView *)view;
 - (double)lastGPUTimeMilliseconds;
 - (int)currentPattern;
+- (void)nextPattern;
+- (void)prevPattern;
 @end
