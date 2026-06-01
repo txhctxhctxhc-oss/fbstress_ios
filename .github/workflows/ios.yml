@@ -21,6 +21,11 @@ jobs:
           xcodebuild -version
           xcodebuild -showsdks | grep iphoneos
 
+      - name: Derive version
+        run: |
+          echo "MARKETING_VERSION=1.${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
+          echo "CURRENT_PROJECT_VERSION=${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
+
       - name: Build (no signing)
         run: |
           xcodebuild \
@@ -33,6 +38,8 @@ jobs:
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             ONLY_ACTIVE_ARCH=NO \
+            MARKETING_VERSION="$MARKETING_VERSION" \
+            CURRENT_PROJECT_VERSION="$CURRENT_PROJECT_VERSION" \
             clean build
 
       - name: Package .app → unsigned .ipa

@@ -55,7 +55,7 @@ typedef struct {
     [enc setRenderPipelineState:self.pipeline];
 
     float t      = (float)(CACurrentMediaTime() - self.startTime);
-    int   pat    = (int)(t * 0.5f) % 6;
+    int   pat    = (int)(t * 4.0f) % 8;
     self.pattern = pat;
 
     Uniforms u = { .time = t, .pattern = pat };

@@ -68,6 +68,8 @@ static NSString *patternName(int p) {
         case 3: return @"Hash Noise";
         case 4: return @"Sin Wave";
         case 5: return @"Cycle Fill";
+        case 6: return @"Radial Burst";
+        case 7: return @"Fractal Bands";
         default: return @"Unknown";
     }
 }
@@ -77,7 +79,7 @@ static NSString *patternName(int p) {
     CFTimeInterval now     = CACurrentMediaTime();
     CFTimeInterval elapsed = now - _lastTime;
 
-    if (elapsed >= 0.5) {          // update every 0.5 s
+    if (elapsed >= 0.25) {          // update every 0.25 s
         _fps        = _frameCount / elapsed;
         _frameCount = 0;
         _lastTime   = now;
